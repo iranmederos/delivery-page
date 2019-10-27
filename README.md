@@ -1,2 +1,2 @@
-# Pag1
-this is a example of my first practice page
+# Delivery page
+this is a example of my first practice page, maked with JQ
