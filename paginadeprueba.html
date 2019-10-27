@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>MY_DIGITAL_STORE</title>
+  <div id="barra">
+    <H3 id=titulo style="text-align: center; border-radius: 20px" class="container bg-light">IRAN'S DIGITAL STORE</H3>
+  </div>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"> </script>
+</head>
+<body class="bg-secondary" style="background-image: url('http://mikiosko.es/img/mi-kiosko-logo-1564826826.jpg'); background-repeat: repeat;" >
+  <div id="caja" class="container bg-light" style="border-radius: 20px;">
+    <form>
+      <div class="container bg-info text-light" style="border-radius: 20px; text-align: center">
+        <H2>Choose what you want</H2>
+      </div>
+      <div id="tienda" class="row">
+
+      </div>
+      <div id="tienda2" class="row">
+
+      </div>
+      <h2 class="bg-info text-light" style="text-align: center; border-radius:20px">¿Where you want the delivery?</h2>
+      <div id="dire">
+        <input id="direc" type="text" placeholder="put you direction" class="form-control">
+      </div>
+      <p style="color:red"><b id="error"></b></p>
+      <h2 id="total" style="display:none"></h2>
+      <button type="button" id="btn" class="btn btn-warning" style="text-align: center">Buy</button><hr>
+      <button type="button" id="btn3" class="btn btn-warning" style="text-align: center">Add</button>
+      <p id="agregar">If you want something more, you can select the check of product and click "Add"</p>
+      <br>
+      <div id='factura'>
+        <div class="container bg-info text-light" style="border-radius: 20px; text-align: center">
+          <h2>You bill</h2>
+        </div>
+        <ul class="list-group mb-3">
+          <li  class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">You products</h6>
+            <small class="text-muted"></small>
+          </div>
+          <div id= 'produ'>
+
+          </div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div >
+              <h6 class="my-0">Direction</h6>
+              <small class="text-muted" ></small>
+            </div>
+            <div id="direccion">
+              <span class="text-muted">Delivery $70</span>
+            </div>               
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total + Delivery (Pesos)</span>
+            <strong id="totalf"></strong>
+          </li>
+        </ul>
+     </div>
+     <button type="submit" id="btn2" class="btn btn-warning" style="text-align: center">Conrfim you shop</button><hr>
+     <div id="repar">  
+       <h6>Push the boton "Delivery man" and know who send you delivery</h6>
+       <div class="card" style="width: 18rem;">
+         <img id="foto" src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="card-img-top" alt="">
+         <div class="card-body">
+           <h5 id="nombre" class="card-title">Full name</h5>
+            <hr>
+           <p id="email" class="card-text">Email</p>
+         </div>
+       </div>
+       <button type="button" class="btn btn-outline-success mt-3"  id="btn6">Delivery man</button>
+      </div>
+    </form>
+  </div>
+
+    <script>
+    $("#tienda2").hide();
+    $("#factura").hide();
+    $("#btn2").hide();
+    $("#btn3").hide();
+    $("#agregar").hide();
+    $("#repar").hide();
+    var productos = [
+      {
+        nombre: "Coca cola 500ml",
+        precio: 50,
+        foto:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Coca-Cola_bottle_cap.svg/1200px-Coca-Cola_bottle_cap.svg.png"
+      },
+      {
+        nombre: "Galletitas Oreo 70 Gr ",
+        precio: 40,
+        foto:"https://elpoderdelconsumidor.org/wp-content/uploads/2015/05/galleta-oreo-3.jpg"
+      },
+      {
+        nombre: "Papas Fritas Lay 120 Gr",
+        precio: 30,
+        foto:"https://geant.vteximg.com.br/arquivos/ids/207500-1000-1000/573099.jpg?v=636421030328570000"
+      },
+      {
+        nombre: "Mana rellenas 120 Gr",
+        precio: 35,
+        foto:"https://images-ti-vm1.cdn-imasdev.com/large/P258186-2.jpg?20190826121346"
+      },
+      {
+        nombre: "Maruchan 64 Gr",
+        precio: 80,
+        foto:"https://maruchan.com.mx/web/wp-content/uploads/2018/12/Maruchan_Moviendose.gif"
+      },
+      {
+        nombre:"Nutella 350 Gr",
+        precio: 250,
+        foto:"https://images-na.ssl-images-amazon.com/images/I/71OSDx9uJjL._SX466_.jpg"
+      },
+      {
+        nombre:"Leche Serenesima 1L",
+        precio: 40,
+        foto:"https://www.laserenisima.com.ar/images/productos/Leche3G_(1).png"
+      },
+      {
+        nombre:"Alfajor Trishot 60 Gr",
+        precio: 40,
+        foto:"https://ardiaqa.vteximg.com.br/arquivos/ids/189463-1000-1000/ALFAJOR-TRIPLE-CHOCOLATE-SHOT-60GR.jpg?v=636827309045330000"
+      },
+    ];
+
+    for (var i = 0; i < productos.length ; i++){
+      $("#tienda").append(
+      "<div class='col-sm-3 card mb-4' >"+
+      "<div><img class='bd-placeholder-img card-img-top width='100%' height='225' ' src="+productos[i].foto+" ></div><div><input type='checkbox' id='"+i+"'></div>"+
+      "<div><label for="+i+"'>"+productos[i].nombre+" - $"+productos[i].precio+"</label></div></div>");
+    }
+    
+    
+    $("#btn").click(function(){
+      var check = $(":checkbox:checked"); 
+      var addres= $('#direc').val();
+      var suma=0;
+      for (var index=0;index<check.length;index++){
+        if(check[index].checked){                                       
+            suma = suma + (productos[check[index].id].precio);           
+        }
+      }
+      if(suma!=0 && addres!=""){
+        for (var index2=0;index2<check.length;index2++){
+          if(check[index2].checked){
+            $('#produ').append('<li class="text-muted">'+productos[check[index2].id].nombre+'</li>');
+          };
+        };
+        $("#error").hide();
+        $("#btn").hide();
+        $("#total").show().text("You buy: $"+suma);
+        $('#direccion').append("<div><li class='text-muted'>"+addres+"</li></div>");
+        $('#totalf').show().text((suma+70)+"$");
+        $("#factura").show();
+        $("#btn3").show();
+        $("#agregar").show();
+        $("#btn2").show();
+        $("#repar").show();
+        $('#tienda').hide();
+        for (var i = 0; i < productos.length ; i++){
+           $("#tienda2").append(
+           "<div class='col-sm-3 card mb-4' >"+
+           "<div><img class='bd-placeholder-img card-img-top width='100%' height='225' ' src="+productos[i].foto+" ></div><div><input type='radio' name='p' id='"+i+"'></div>"+
+          "<div><label for='"+i+"'>"+productos[i].nombre+" - $"+productos[i].precio+"</label></div></div>");
+         }
+         $('#tienda2').show();
+      }else{
+        $("#error").show().text("Select some product and complete you direction");
+      };
+
+      var suma2= suma;
+      $("#btn3").click(function(){
+        
+        var check2 = $(":radio:checked");
+        for (var index3=0;index3<check2.length;index3++){
+        if(check2[index3].checked){                                       
+            suma2 = suma2 + (productos[check2[index3].id].precio); 
+        $('#produ').append('<li class="text-muted">'+productos[check2[index3].id].nombre+'</li>');
+        $("#total").show().text("You buy: $"+suma2);
+        $('#totalf').show().text((suma2+70)+"$");          
+        };     
+      };    
+    });
+
+      $("#btn2").click(function(){
+          alert("thank you, we arrive soon")
+        });
+
+
+        $('#btn6').click(function(){
+      $.get('https://reqres.in/api/users/2', function(res,estado){
+        console.log(estado);
+        console.log(res);
+        $('#foto').attr("src", res.data.avatar);
+        $('#nombre').text(res.data.first_name+" "+res.data.last_name);
+        $('#email').text(res.data.email);
+      });
+    });
+    });
+  </script>
+
+    </body>
+</html>
